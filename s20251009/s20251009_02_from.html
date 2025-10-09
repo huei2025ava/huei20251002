@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3></h3>
+    <form action="">
+      <fieldset>
+        <p>
+          <!-- for id 相同 -->
+          <!-- name 送到php後端 會顯示欄位名稱 -->
+          <label for="acc">帳號</label>
+          <input type="text" name="" id="acc" />
+        </p>
+        <p>
+          <label for="pwd">密碼</label>
+          <input type="text" name="" id="pwd" />
+        </p>
+        <p>
+          <input type="submit" value="送出" />
+        </p>
+        <p>
+          <!-- 單選radio，name必須相同，不然會當作三組獨立的 radio 按鈕，會變成多選 -->
+          <input type="radio" name="lang" id="" value="" />
+          <label for="">html</label>
+          <input type="radio" name="lang" id="" value="" />
+          <label for="">css</label>
+          <input type="radio" name="lang" id="" value="" />
+          <label for="">js </label>
+        </p>
+        <p>
+          <input type="radio" name="gender" id="" />
+          <label for="">男</label>
+          <br />
+          <input type="radio" name="gender" id="" />
+          <label for="">女</label>
+        </p>
+        <p>
+          <!-- 多選checkbox的 name 會有[]，是因為有多個選項，必須用陣列 [] 設定，不然後端通常只會收到最後一個被勾選的值 -->
+          <input type="checkbox" name="hobby[]" id="" />
+          上網
+          <input type="checkbox" name="hobby[]" id="" />
+          打球
+          <input type="checkbox" name="hobby[]" id="" />
+          聽音樂
+          <input type="checkbox" name="hobby[]" id="" />
+          追劇
+        </p>
+        <p>
+          <input type="reset" value="重置" />
+          <input type="submit" value="送出" />
+        </p>
+        <p>
+          <label for="">備註說明</label>
+          <br />
+          <textarea name="" id="" cols="50" role="10"></textarea>
+        </p>
+      </fieldset>
+    </form>
+  </body>
+</html>

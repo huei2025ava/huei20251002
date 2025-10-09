@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>人資應徵表</title>
+    <style>
+      body {
+        font-family: "Noto Sans TC", sans-serif;
+        background: linear-gradient(135deg, #d0e6f9, #f7fbff);
+        padding: 20px;
+        margin: 0;
+      }
+
+      form {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 600px;
+        margin: 40px auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h3 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      fieldset {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+
+      legend {
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      p {
+        margin: 10px 0;
+      }
+
+      label {
+        display: inline-block;
+        width: 100px;
+        vertical-align: top;
+        white-space: nowrap;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="file"],
+      select,
+      textarea {
+        width: 60%;
+        padding: 5px;
+        border: 1px solid #ccc;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 5px;
+      }
+
+      input[type="submit"],
+      input[type="reset"] {
+        padding: 6px 12px;
+        margin-right: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 600px) {
+        label {
+          display: block;
+          width: auto;
+          margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="file"],
+        select,
+        textarea {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h3>職位應徵表</h3>
+    <form action="">
+      <fieldset>
+        <legend>基本資料</legend>
+        <p>
+          <label for="name">姓名：</label>
+          <input type="text" name="name" id="name" required />
+        </p>
+        <p>
+          <label for="email">Email：</label>
+          <input type="email" name="email" id="email" required />
+        </p>
+        <p>
+          <label for="phone">電話：</label>
+          <input type="tel" name="phone" id="phone" required />
+        </p>
+        <p>
+          <label>性別：</label>
+          <input type="radio" name="gender" id="male" value="男" />
+          <label for="male">男</label>
+          <input type="radio" name="gender" id="female" value="女" />
+          <label for="female">女</label>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>應徵資訊</legend>
+        <p>
+          <label for="education">最高學歷：</label>
+          <select name="education" id="education">
+            <option value="高中/職">高中/職</option>
+            <option value="專科">專科</option>
+            <option value="大學">大學</option>
+            <option value="碩士">碩士</option>
+            <option value="博士">博士</option>
+          </select>
+        </p>
+        <p>
+          <label>技能專長：</label><br />
+          <input type="checkbox" name="skills[]" id="" />
+          <label for="skill1">程式語言PHP</label>
+          <input type="checkbox" name="skills[]" id="" />
+          <label for="skill2">資料庫MySQL</label>
+          <input type="checkbox" name="skills[]" id="" />
+          <label for="skill3">版本控制(Git)</label>
+          <input type="checkbox" name="skills[]" id="" />
+          <label for="skill4">API 設計</label>
+        </p>
+        <p>
+          <label for="experience">工作年資：</label>
+          <input type="number" name="experience" id="experience" min="0" /> 年
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>其他</legend>
+        <p>
+          <label for="note">備註說明：</label><br />
+          <textarea name="note" id="note" cols="50" rows="5"></textarea>
+        </p>
+      </fieldset>
+
+      <p>
+        <input type="reset" value="重置" />
+        <input type="submit" value="送出應徵資料" />
+      </p>
+    </form>
+  </body>
+</html>
