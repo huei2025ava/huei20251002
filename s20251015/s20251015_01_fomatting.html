@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .nav {
+        width: 100%;
+        /* height: 10vh; */
+        background-color: aliceblue;
+      }
+
+      .box1 {
+        width: 100%;
+        height: 90vh;
+        background-color: rgb(223, 135, 169);
+      }
+
+      .box2 {
+        width: 100%;
+        height: 90vh;
+        background-color: rgb(109, 111, 230);
+      }
+      .box3 {
+        width: 100%;
+        height: 90vh;
+        background-color: lightseagreen;
+      }
+      .img1 {
+        width: 100px;
+        height: 100px;
+      }
+      img {
+        width: 100%;
+        height: 90vh;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>HTML Formatting Elements</h2>
+    <!-- 粗體 -->
+    <p>
+      <b>This is bold text</b>
+    </p>
+
+    <!-- 有語意的粗體 -->
+    <p>
+      <strong>This is bold text</strong>
+    </p>
+
+    <!--  -->
+    <p>
+      <i>This is italic text i</i>
+    </p>
+
+    <!-- 有語意的斜體 -->
+    <p>
+      <em>This is italic text em</em>
+    </p>
+
+    <br />
+    <hr />
+    <br />
+    <!-- 
+    註解不要寫帳號密碼，私人資訊，因為看開發者工具就會被看到 
+    -->
+
+    <!-- class 群組 -->
+    <!-- id 唯一 -->
+    <div class="nav">
+      <a href="#b1"> <img class="img1" src="./image/food01.png" alt="" /> </a>
+      <a href="#b2"> <img class="img1" src="./image/food02.png" alt="" /> </a>
+      <a href="#b3"> <img class="img1" src="./image/food03.png" alt="" /> </a>
+    </div>
+
+    <div id="b1"></div>
+    <br />
+    <div class="box1">
+      <img src="./image/food01.png" alt="" />
+    </div>
+    <br />
+    <div id="b2"></div>
+    <div class="box2">
+      <img src="./image/food02.png" alt="" />
+    </div>
+    <br />
+    <div id="b3"></div>
+    <div class="box3">
+      <img src="./image/food03.png" alt="" />
+    </div>
+  </body>
+</html>

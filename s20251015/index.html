@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4efe7; /* 淺米色背景 */
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #5a4d3c; /* 深咖啡色字體 */
+      }
+
+      table {
+        margin: 0 auto;
+        border-collapse: separate;
+        border-spacing: 30px 20px;
+      }
+
+      td {
+        text-align: center;
+        background-color: #fffaf3; /* 柔和淡奶色 */
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 340px;
+      }
+
+      td:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      h3 {
+        margin-bottom: 15px;
+        color: #6c584c; /* 柔和棕色 */
+      }
+
+      img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      a:hover img {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center; margin-bottom: 30px; color: #333">
+      🍽️ 精選餐廳
+    </h1>
+
+    <table>
+      <tr>
+        <td>
+          <h3>果然匯</h3>
+          <a href="https://www.fruitfulfood.com.tw/zh-TW/menu/classic_dishes">
+            <img src="./image/food01.png" alt="" />
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3>小福利</h3>
+          <a href="https://xiaofree.com.tw/zh-TW/menu">
+            <img src="./image/food02.png" alt="" />
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3>響食天堂</h3>
+          <a href="https://www.eatogether.com.tw/zh-TW/menu/seasonal">
+            <img src="./image/food03.png" alt="" />
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3>添好運</h3>
+          <a href="http://www.timhowan.com.tw/menu/list/popular-meal">
+            <img src="./image/food04.png" alt="" />
+          </a>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
