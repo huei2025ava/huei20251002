@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Padding</title>
+    <style>
+      /* content-box */
+      /* 盒子大小會被 padding 撐大 */
+      .box {
+        width: 300px;
+        height: 300px;
+        background-color: lightpink;
+        border: 3px solid black;
+
+        /* 上 右 下 左 */
+        padding: 30px 80px 50px 30px;
+      }
+
+      /* border-box */
+      /* 盒子大小固定，包含 padding 與 border */
+      .box2 {
+        box-sizing: border-box;
+        /* overflow: hidden; */
+
+        width: 300px;
+        height: 300px;
+        background-color: lightseagreen;
+        border: 3px solid black;
+
+        /* 上 右 下 左 */
+        padding: 30px 80px 50px 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>content-box</h2>
+    <div class="box">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate omnis
+      numquam non reiciendis natus minima ex officiis vel, enim id ut
+      necessitatibus possimus rem eum porro, voluptatibus aut, magnam cum?
+      Ducimus deserunt, dolor quo impedit sunt odit rem. Maiores ducimus iste in
+      enim, repellendus ratione perspiciatis ipsam? Rerum, voluptate! Iusto,
+      nihil! Molestiae, magni dolorum iste facilis culpa sed deleniti adipisci
+      ratione deserunt, modi beatae veritatis illum quae, magnam quos nesciunt
+      libero provident distinctio ab maxime sunt. Tempora a ad aut?
+    </div>
+
+    <h2>border-box</h2>
+    <div class="box2">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt quis
+      culpa reiciendis eos voluptatem accusamus, nesciunt, laborum, modi
+      architecto odit rem quod porro consectetur eveniet quasi dolor? Quod
+      mollitia neque, distinctio pariatur repellat, excepturi, aut dolore quis
+      illum perspiciatis modi inventore reiciendis cumque quas quasi debitis
+      dolorem necessitatibus aperiam expedita. Alias fuga eligendi, repudiandae
+      inventore magnam deserunt esse nisi, aliquid minima consectetur obcaecati,
+      ipsam in aliquam voluptas. Maiores molestias nisi molestiae vitae
+      laboriosam, sunt omnis, sint ab consectetur, qui at?
+    </div>
+  </body>
+</html>
