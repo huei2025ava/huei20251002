@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Margin robot</title>
+    <style>
+      .head {
+        background-color: lightseagreen;
+        width: 220px;
+        height: 220px;
+        margin-top: 20px;
+        margin: auto;
+      }
+      .allbody {
+        width: 100%;
+        margin: auto;
+        flex-wrap: nowrap; /* 不換行 */
+        justify-content: center; /* 置中排列 */
+        max-width: 620px;
+      }
+
+      .img2 {
+        display: inline-block;
+        background-color: gold;
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+        margin-left: 20px;
+      }
+      .hand {
+        display: inline-block;
+        background-color: gold;
+        width: 115px;
+        height: 200px;
+        margin-bottom: 100px;
+        margin-left: 20px;
+      }
+      .allfoot {
+        width: 100%;
+        margin: auto;
+        flex-wrap: nowrap; /* 不換行 */
+        justify-content: center; /* 置中排列 */
+        max-width: 370px;
+      }
+      .foot {
+        display: inline-block;
+        background-color: gold;
+        width: 150px;
+        height: 300px;
+        margin-top: 20px;
+        margin-left: 20px;
+      }
+      .img1 {
+        width: 220px;
+        height: 220px;
+      }
+
+      .head,
+      .body,
+      .hand,
+      .foot,
+      .img1,
+      .img2 {
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="head">
+      <img class="img1" src="./image/smile.png" alt="" />
+    </div>
+
+    <div class="allbody">
+      <div class="hand"></div>
+      <!-- <div class="body"></div> -->
+      <img class="img2" src="./image/heart.png" alt="" />
+      <div class="hand"></div>
+    </div>
+
+    <div class="allfoot">
+      <div class="foot"></div>
+      <div class="foot"></div>
+    </div>
+  </body>
+</html>
