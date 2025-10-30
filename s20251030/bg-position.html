@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Position</title>
+    <style>
+      .box {
+        width: 300px;
+        height: 400px;
+        background-color: lightskyblue;
+        background-image: url("image/one.png");
+      }
+      .wrapper {
+        display: flex;
+        flex-direction: column; /* 垂直排列兩排  container*/
+        justify-content: center; /* 垂直置中 */
+        align-items: center; /* 水平置中 */
+        height: 100vh;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+      .box1 {
+        background-position: 619px 394px;
+      }
+      .box2 {
+        background-position: 290px 1224px;
+      }
+      .box3 {
+        background-position: 950px 1224px;
+      }
+      .box4 {
+        background-position: 290px 818px;
+      }
+      .box5 {
+        background-position: -16px 818px;
+      }
+      .box6 {
+        background-position: -349px 818px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+      </div>
+      <div class="container">
+        <div class="box box4"></div>
+        <div class="box box5"></div>
+        <div class="box box6"></div>
+      </div>
+    </div>
+  </body>
+</html>
