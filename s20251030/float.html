@@ -1,42 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>float menu</title>
+    <title>美味餐廳</title>
     <style>
-      /* menu */
+      * {
+        overflow: hidden;
+      }
+      body {
+        margin: 0;
+        font-family: "微軟正黑體", sans-serif;
+      }
+      /* 左側導覽 */
       .container-menu {
         float: left;
         width: 20%;
         height: 100vh;
-        background-color: lightgreen;
-      }
-      .container-menu > a {
-        display: block;
-        width: 200px;
-        height: 200px;
-        background-color: lightgoldenrodyellow;
-        margin: auto;
-        margin-top: 10%;
+        background-color: #f6d365;
+        background-image: linear-gradient(315deg, #f6d365 0%, #fda085 74%);
         text-align: center;
-        padding-top: 25%;
-        box-sizing: border-box;
+        color: #fff;
       }
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        padding: 40px 0 20px 0;
+      }
+      .container-menu a {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: 0.3s;
+      }
+      .container-menu a:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+      }
+
+      /* 主內容區 */
       .container-main {
         float: left;
         width: 80%;
         height: 100vh;
-        background-color: lightsalmon;
+        background-color: #fffaf4;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
       }
     </style>
   </head>
   <body>
     <div class="container-menu">
-      <a href="">A</a>
-      <a href="">B</a>
-      <a href="">C</a>
+      <div class="logo">🍽 美味餐廳</div>
+      <a href="./web/home.html" target="mainFrame">首頁</a>
+      <a href="./web/menu.html" target="mainFrame">菜單</a>
+      <a href="./web/about.html" target="mainFrame">關於我們</a>
+      <a href="./web/contact.html" target="mainFrame">聯絡我們</a>
     </div>
-    <div class="container-main"></div>
+
+    <div class="container-main">
+      <iframe name="mainFrame" src="./web/home.html"></iframe>
+    </div>
   </body>
 </html>
