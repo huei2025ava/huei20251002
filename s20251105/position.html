@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Positon</title>
+    <style>
+      .box {
+        width: 300px;
+        height: 300px;
+        background-color: lightcoral;
+        margin-top: 20px;
+      }
+      .box2 {
+        position: relative;
+        left: 100px;
+        margin-top: 50px;
+      }
+      /* 就算增加長度，position: fixed，還是固定在螢幕右下角 */
+      /* body {
+        height: 2000px;
+      } */
+      .box3 {
+        position: fixed;
+        right: 0px;
+        bottom: 0px;
+      }
+      .box-in {
+        width: 100px;
+        min-height: 100px;
+        background-color: lightseagreen;
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        border-radius: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1"></div>
+    <div class="box box2">
+        <div class="box-in">
+
+        </div>
+    </div>
+    <div class="box box3"></div>
+  </body>
+</html>
