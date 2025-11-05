@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MUJI 風格首頁練習</title>
+    <style>
+      /* 全域設定 */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: auto;
+        width: 80%;
+        font-family: "Noto Sans TC", sans-serif;
+        color: #333;
+        background-color: #fff;
+      }
+
+      /* 頁首區 */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: white;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        padding: 0 50px;
+        box-sizing: border-box;
+        /* 只有「定位過的元素」（position 為 relative, absolute, fixed, 或 sticky）才會受 z-index 影響
+       z-index數字越大 → 越上層
+      */
+        z-index: 1000;
+      }
+
+      header h1 {
+        font-size: 24px;
+        letter-spacing: 2px;
+      }
+
+      nav {
+        margin-left: 50px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #333;
+        margin-left: 30px;
+        font-size: 16px;
+      }
+
+      nav a:hover {
+        border-bottom: 2px solid #333;
+      }
+
+      /* 首圖區（Hero） */
+      .hero {
+        margin-top: 70px;
+        position: relative;
+        width: 100%;
+        height: 820px;
+        overflow: hidden;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 100%;
+        /* 圖片會裁掉邊邊、但保持比例填滿容器 */
+        object-fit: cover;
+      }
+
+      .hero .text {
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        /* position: absolute;	讓元素可自由定位
+           top: 50%;	將元素頂端放在中間線
+           transform: translateY(-50%);	元素自己往上移動一半高度 → 真正垂直置中 
+           這3行寫完才能垂直置中*/
+        /* transform: translateY(-50%); */
+        color: white;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 20px 40px;
+        font-size: 28px;
+        letter-spacing: 2px;
+        border-radius: 10px;
+      }
+
+      /* 商品內容區 */
+      .content {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      h2 {
+        margin-top: 25px;
+        margin-bottom: 0px;
+        padding-left: 69px;
+      }
+
+      .product {
+        float: left;
+        width: 20%;
+        margin: 0px 1.66%;
+        box-sizing: border-box;
+      }
+
+      .product2 {
+        width: 15%;
+        margin-top: 35px;
+      }
+
+      .icon {
+        width: 50px;
+        height: 30px;
+        background-color: white;
+        position: relative;
+        top: 50px;
+        left: 22px;
+        border-radius: 5px;
+        color: rgb(196, 87, 87);
+        text-align: center;
+        line-height: 28px;
+        font-weight: bold;
+      }
+
+      .product img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .product p {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 16px;
+      }
+
+      /* 清除浮動 */
+      .clearfix::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      /* 頁尾 */
+      footer {
+        clear: both;
+        text-align: center;
+        padding: 40px;
+        border-top: 1px solid #ccc;
+        color: #666;
+        font-size: 14px;
+      }
+
+      /* 回頂按鈕 */
+      .top-btn {
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        background-color: #333;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .top-btn:hover {
+        background-color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>MUJI STYLE</h1>
+      <nav>
+        <a href="#">首頁</a>
+        <a href="#new">新商品</a>
+        <a href="#popular">人氣商品</a>
+        <a href="#">關於我們</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <img src="./image/big.png" alt="Hero Image" />
+      <div class="text">自然．簡約．生活美學</div>
+    </section>
+
+    <h2 id="new">新商品</h2>
+    <section class="content clearfix">
+      <div class="product">
+        <div class="icon">new</div>
+        <img src="./image/1.png" alt="" />
+        <p>女裝</p>
+      </div>
+      <div class="product">
+        <div class="icon">new</div>
+        <img src="./image/2.png" alt="" />
+        <p>男裝</p>
+      </div>
+      <div class="product">
+        <div class="icon">new</div>
+        <img src="./image/3.png" alt="" />
+        <p>食品</p>
+      </div>
+      <div class="product">
+        <div class="icon">new</div>
+        <img src="./image/4.png" alt="" />
+        <p>旅遊用品</p>
+      </div>
+    </section>
+
+    <h2 id="popular">人氣商品</h2>
+    <section class="content clearfix">
+      <div class="product product2">
+        <img src="./image/5.png" alt="" />
+        <p>商品</p>
+      </div>
+      <div class="product product2">
+        <img src="./image/6.png" alt="" />
+        <p>鞋子</p>
+      </div>
+      <div class="product product2">
+        <img src="./image/7.png" alt="" />
+        <p>沐浴乳</p>
+      </div>
+      <div class="product product2">
+        <img src="./image/8.png" alt="" />
+        <p>收納包</p>
+      </div>
+      <div class="product product2">
+        <img src="./image/9.png" alt="" />
+        <p>餅乾</p>
+      </div>
+    </section>
+
+    <footer>© 2025 MUJI STYLE</footer>
+
+    <a href="#" class="top-btn">▲ TOP</a>
+  </body>
+</html>
