@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <title>怪獸電力公司電視台</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #0f2027 0%,
+          #203a43 50%,
+          #2c5364 100%
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: "Arial Black", "Impact", sans-serif;
+      }
+
+      /* ===== 電視機外觀 ===== */
+      .tv-screen {
+        width: 420px;
+        height: 580px;
+        background: #000;
+        border-radius: 40px;
+        padding: 20px;
+        box-shadow: inset 0 0 60px rgba(0, 212, 255, 0.3),
+          0 0 80px rgba(0, 212, 255, 0.4), 0 20px 40px rgba(0, 0, 0, 0.9);
+        position: relative;
+        perspective: 1500px;
+      }
+
+      .screen-inner {
+        width: 100%;
+        height: 100%;
+        background: #111;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        border: 8px solid #222;
+      }
+
+      #container {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ===== 原本的卡片樣式保留 ===== */
+      .card {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
+          0 0 50px rgba(0, 212, 255, 0.4);
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+        border: 6px solid #00d4ff;
+      }
+
+      .card-inner {
+        /* 原本的內層結構 */
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .card-stripe {
+        height: 40px;
+        background: repeating-linear-gradient(
+          45deg,
+          #ffd700,
+          #ffd700 20px,
+          #000 20px,
+          #000 40px
+        );
+      }
+      .monster-display {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle at center, #3a3a3a 0%, #1a1a1a 100%);
+        position: relative;
+        overflow: hidden;
+        padding: 20px;
+      }
+      .monster-display::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 212, 255, 0.3) 0%,
+          transparent 70%
+        );
+        animation: pulse 2s ease-in-out infinite;
+      }
+      .monster-img {
+        width: 100%;
+        height: 100%;
+        max-height: 380px;
+        object-fit: contain;
+        z-index: 2;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+        animation: float 3s ease-in-out infinite;
+      }
+      .card-footer {
+        height: 80px;
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 4px solid #ffd700;
+      }
+      .employee-badge {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 12px 30px;
+        border-radius: 25px;
+        border: 3px solid #ffd700;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+      }
+      .employee-text {
+        color: #ffd700;
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 0.8;
+        }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      /* ===== 三個按鈕 ===== */
+      .btn-container {
+        margin-top: 30px;
+        display: flex;
+        gap: 30px;
+      }
+      .box-btn {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        transition: all 0.2s;
+      }
+      .box-btn:hover {
+        transform: scale(1.15);
+      }
+      .box-btn:active {
+        transform: scale(0.95);
+      }
+
+      .red-btn {
+        background: radial-gradient(#ff3366, #cc0033);
+      }
+      .green-btn {
+        background: radial-gradient(#33ff99, #00cc66);
+      }
+      .yellow-btn {
+        background: radial-gradient(#ffff66, #ffcc00);
+      }
+
+      /* ===== 換台時的背景顏色（蓋在最上面） ===== */
+      .tv-bg {
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.6s;
+      }
+      .bg-red {
+        background: #cc0033;
+        opacity: 1;
+      }
+      .bg-green {
+        background: #00cc66;
+        opacity: 1;
+      }
+      .bg-yellow {
+        background: #ffcc00;
+        opacity: 1;
+      }
+
+      /* ===== 原本的15種瘋狂倒下動畫（保持不變） ===== */
+      .fall-1 {
+        animation: fall1 1.8s cubic-bezier(0.25, 0.8, 0.4, 1) forwards;
+      }
+      .fall-2 {
+        animation: fall2 1.8s cubic-bezier(0.25, 0.8, 0.4, 1) forwards;
+      }
+      /* ... 其餘 fall-3 到 fall-15 省略，貼完下面一起放 ... */
+      @keyframes fall1 {
+        to {
+          transform: translate3d(120px, 700px, -450px) rotateX(82deg)
+            rotateZ(30deg);
+          opacity: 0.1;
+        }
+      }
+      @keyframes fall2 {
+        to {
+          transform: translate3d(-160px, 680px, -380px) rotateX(88deg)
+            rotateZ(-45deg);
+          opacity: 0.05;
+        }
+      }
+      @keyframes fall3 {
+        to {
+          transform: translate3d(200px, 720px, -520px) rotateX(75deg)
+            rotateZ(60deg);
+          opacity: 0.2;
+        }
+      }
+      @keyframes fall4 {
+        to {
+          transform: translate3d(-100px, 740px, -300px) rotateX(90deg)
+            rotateZ(-20deg);
+          opacity: 0.15;
+        }
+      }
+      @keyframes fall5 {
+        to {
+          transform: translate3d(80px, 660px, -600px) rotateX(78deg)
+            rotateZ(-35deg) rotateY(25deg);
+          opacity: 0.2;
+        }
+      }
+      @keyframes fall6 {
+        to {
+          transform: translate3d(-220px, 710px, -400px) rotateX(85deg)
+            rotateZ(50deg);
+          opacity: 0;
+        }
+      }
+      @keyframes fall7 {
+        to {
+          transform: translate3d(180px, 670px, -480px) rotateX(80deg)
+            rotateZ(-55deg);
+          opacity: 0.1;
+        }
+      }
+      @keyframes fall8 {
+        to {
+          transform: translate3d(0px, 760px, -350px) rotateX(92deg)
+            rotateZ(15deg);
+          opacity: 0.05;
+        }
+      }
+      @keyframes fall9 {
+        to {
+          transform: translate3d(250px, 730px, -550px) rotateX(70deg)
+            rotateZ(70deg);
+          opacity: 0.25;
+        }
+      }
+      @keyframes fall10 {
+        to {
+          transform: translate3d(-180px, 700px, -420px) rotateX(87deg)
+            rotateZ(-65deg);
+          opacity: 0.1;
+        }
+      }
+      @keyframes fall11 {
+        to {
+          transform: translate3d(140px, 750px, -500px) rotateX(83deg)
+            rotateZ(40deg) rotateY(-30deg);
+          opacity: 0.15;
+        }
+      }
+      @keyframes fall12 {
+        to {
+          transform: translate3d(-130px, 690px, -460px) rotateX(79deg)
+            rotateZ(-40deg);
+          opacity: 0.2;
+        }
+      }
+      @keyframes fall13 {
+        to {
+          transform: translate3d(300px, 780px, -600px) rotateX(76deg)
+            rotateZ(80deg);
+          opacity: 0.05;
+        }
+      }
+      @keyframes fall14 {
+        to {
+          transform: translate3d(-250px, 720px, -380px) rotateX(89deg)
+            rotateZ(-75deg);
+          opacity: 0;
+        }
+      }
+      @keyframes fall15 {
+        to {
+          transform: translate3d(100px, 710px, -700px) rotateX(81deg)
+            rotateZ(360deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 電視機 -->
+    <div class="tv-screen">
+      <div class="screen-inner">
+        <!-- 背景色層（換台時會顯示） -->
+        <div id="tvBg" class="tv-bg"></div>
+
+        <!-- 怪獸卡片容器 -->
+        <div class="container" id="container">
+          <div class="card" id="currentCard">
+            <div class="card-inner">
+              <div class="card-stripe"></div>
+              <div class="monster-display">
+                <img class="monster-img" src="./image/01.png" alt="JOHNNY" />
+              </div>
+              <div class="card-footer">
+                <div class="employee-badge">
+                  <div class="employee-text">JOHNNY</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 三個換台按鈕 -->
+    <div class="btn-container">
+      <div class="box-btn red-btn"></div>
+      <div class="box-btn green-btn"></div>
+      <div class="box-btn yellow-btn"></div>
+    </div>
+
+    <script>
+      const monsters = [
+        { image: "./image/01.png", title: "JOHNNY" },
+        { image: "./image/02.png", title: "RANDALL" },
+        { image: "./image/03.png", title: "GEORGE" },
+        { image: "./image/04.png", title: "CARRIE" },
+        { image: "./image/06.png", title: "JAVIER" },
+        { image: "./image/07.png", title: "ART" },
+      ];
+
+      let currentIndex = 0;
+      const container = document.getElementById("container");
+      const tvBg = document.getElementById("tvBg");
+
+      // 建立新卡片
+      function createCard(data) {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+      <div class="card-inner">
+        <div class="card-stripe"></div>
+        <div class="monster-display">
+          <img class="monster-img" src="${data.image}" alt="${data.title}">
+        </div>
+        <div class="card-footer">
+          <div class="employee-badge">
+            <div class="employee-text">${data.title}</div>
+          </div>
+        </div>
+      </div>
+    `;
+        return card;
+      }
+
+      // 換怪獸（帶瘋狂倒地動畫）
+      function changeMonster(newIndex) {
+        const oldCard = document.getElementById("currentCard");
+        const newCard = createCard(monsters[newIndex]);
+        container.appendChild(newCard);
+
+        // 隨機瘋狂倒下
+        const fallClass = "fall-" + (Math.floor(Math.random() * 15) + 1);
+        oldCard.classList.add(fallClass);
+
+        oldCard.addEventListener("animationend", () => {
+          container.removeChild(oldCard);
+          newCard.id = "currentCard";
+        });
+
+        currentIndex = newIndex;
+      }
+
+      // 按鈕事件
+      document.querySelector(".red-btn").addEventListener("click", () => {
+        tvBg.className = "tv-bg bg-red";
+        changeMonster((currentIndex + 1) % monsters.length);
+      });
+
+      document.querySelector(".green-btn").addEventListener("click", () => {
+        tvBg.className = "tv-bg bg-green";
+        changeMonster((currentIndex + 1) % monsters.length);
+      });
+
+      document.querySelector(".yellow-btn").addEventListener("click", () => {
+        tvBg.className = "tv-bg bg-yellow";
+        changeMonster((currentIndex + 1) % monsters.length);
+      });
+
+      // 點電視畫面 → 關台（恢復原本深藍背景）
+      document.querySelector(".tv-screen").addEventListener("click", (e) => {
+        // 避免點到按鈕也關台
+        if (e.target.closest(".btn-container")) return;
+        tvBg.className = "tv-bg"; // 移除顏色 class
+      });
+    </script>
+  </body>
+</html>

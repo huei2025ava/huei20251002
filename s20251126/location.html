@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: lightsalmon;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <p  id ="demo"></p>
+    <div class="box"></div>
+    <script>
+        document.getElementById("demo").innerText = "這是現在網址" + window.location.href
+        let myBox = document.querySelector('.box')
+        console.log('myBox' , myBox)
+
+        myBox.addEventListener('click', function(){
+            let url = "https://www.w3schools.com/";
+            window.location.assign(url);
+        })
+    </script>
+</body>
+</html>
