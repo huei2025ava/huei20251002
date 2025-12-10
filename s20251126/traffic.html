@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>紅綠燈練習 - addEventListener</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+        background-color: #f0f0f0;
+    }
+
+    .traffic-light {
+        width: 160px;
+        height: 400px;
+        background-color: #333;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .light {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #111;      /* 預設暗色 */
+        border: 4px solid #222;
+        transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    /* 亮燈時的樣式 */
+    .red.active    { background-color: #e74c3c; box-shadow: 0 0 30px #e74c3c; }
+    .yellow.active { background-color: #f1c40f; box-shadow: 0 0 30px #f1c40f; }
+    .green.active  { background-color: #2ecc71; box-shadow: 0 0 30px #2ecc71; }
+
+    .buttons {
+        margin-top: 40px;
+        display: flex;
+        gap: 20px;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        color: white;
+    }
+
+    .btn-red    { background-color: #c0392b; }
+    .btn-yellow { background-color: #e67e22; }
+    .btn-green  { background-color: #27ae60; }
+
+    button:hover {
+        opacity: 0.8;
+    }
+</style>
+</head>
+<body>
+
+<h1>紅綠燈 addEventListener 練習</h1>
+
+<div class="traffic-light">
+    <div class="light red"    id="redLight"></div>
+    <div class="light yellow" id="yellowLight"></div>
+    <div class="light green"  id="greenLight"></div>
+</div>
+
+<div class="buttons">
+    <button class="btn-red"    id="redBtn">紅燈</button>
+    <button class="btn-yellow" id="yellowBtn">黃燈</button>
+    <button class="btn-green"  id="greenBtn">綠燈</button>
+</div>
+
+<script>
+    // 1. 先抓到三個燈泡和三個按鈕
+    const redLight    = document.getElementById('redLight');
+    const yellowLight = document.getElementById('yellowLight');
+    const greenLight  = document.getElementById('greenLight');
+
+    const redBtn    = document.getElementById('redBtn');
+    const yellowBtn = document.getElementById('yellowBtn');
+    const greenBtn  = document.getElementById('greenBtn');
+
+    // 2. 寫一個「全部關燈」的函式
+    function turnOffAll() {
+        redLight.classList.remove('active');
+        yellowLight.classList.remove('active');
+        greenLight.classList.remove('active');
+    }
+
+    // 3. 為每個按鈕加上 addEventListener
+    redBtn.addEventListener('click', function() {
+        turnOffAll();
+        redLight.classList.add('active');
+    });
+
+    yellowBtn.addEventListener('click', function() {
+        turnOffAll();
+        yellowLight.classList.add('active');
+    });
+
+    greenBtn.addEventListener('click', function() {
+        turnOffAll();
+        greenLight.classList.add('active');
+    });
+
+</script>
+
+</body>
+</html>
