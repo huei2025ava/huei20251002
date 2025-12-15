@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Hide and Show</title>
+
+    <style>
+      .box {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(
+          135deg,
+          #f6d365,
+          #fda085,
+          #fbc2eb,
+          #a1c4fd,
+          #c2e9fb
+        );
+        margin: auto;
+        margin-bottom: 20px;
+      }
+      .button {
+        width: 100px;
+        height: 50px;
+        background-color: lightskyblue;
+        border-radius: 50px;
+        margin: auto;
+        margin-bottom: 10px;
+      }
+      .button.show {
+        background-color: lightpink;
+      }
+      .button.toggle {
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="button hide"></div>
+    <div class="button show"></div>
+    <div class="button toggle"></div>
+    <script>
+      $(document).ready(function () {
+        $(".hide").click(function () {
+          $(".box").hide(1000);
+          console.log('hide ok!!!');
+        });
+        $(".show").click(function () {
+          $(".box").show(1000);
+          console.log('show ok!!!');
+        });
+        $(".toggle").click(function () {
+          $(".box").toggle(1000);
+          console.log("toggle ok!!!");
+        });
+      });
+    </script>
+  </body>
+</html>

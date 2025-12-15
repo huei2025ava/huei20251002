@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>fadeIn fadeOut</title>
+
+    <style>
+      .box {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(
+          135deg,
+          #f6d365,
+          #fda085,
+          #fbc2eb,
+          #a1c4fd,
+          #c2e9fb
+        );
+        margin: auto;
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .overly {
+        position: absolute;
+        inset: 0;
+        background-color: lightslategray;
+      }
+      .button {
+        width: 100px;
+        height: 50px;
+        background-color: lightskyblue;
+        border-radius: 50px;
+        margin: auto;
+        margin-bottom: 10px;
+      }
+      .button.show {
+        background-color: lightpink;
+      }
+      .button.toggle {
+        background-color: lightgreen;
+      }
+      .button.fade {
+        background-color: lightsalmon;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="box">
+        <div class="overly"></div>
+    </div>
+    <div class="button hide"></div>
+    <div class="button show"></div>
+    <div class="button toggle"></div>
+    <div class="button fade"></div>
+    <script>
+      $(document).ready(function () {
+        // $(".fade").click(function () {
+        //   $(".box").fadeToggle(1000);
+        //   console.log('fadeToggle ok!!!');
+        // });
+
+        // 顏色從灰色變透明，顯現出原本box的漸層色
+        $(".fade").click(function () {
+          $(".overly").fadeToggle('1500', 0);
+          console.log('fadeTo ok!!!');
+        });
+      });
+    </script>
+  </body>
+</html>
