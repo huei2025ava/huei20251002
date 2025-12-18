@@ -19,5 +19,52 @@
       }
     </style>
   </head>
-  <body></body>
+  <body>
+    <table id="myTable">
+      <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>tel</td>
+      </tr>
+    </table>
+    <script src="./data/dataJS.js"></script>
+    <script>
+      $(document).ready(function () {
+        // bind
+        const myTable = $("#myTable");
+        console.log(myTable);
+
+        console.log("dataJS", dataJS);
+
+        // 1. get json data
+        let url = "./data/data.json";
+        $.ajax({
+          type: "get",
+          url: url,
+          // data: "data",
+          dataType: "json",
+          success: function (response) {
+            console.log("res", response);
+            console.log("res typeof:", typeof response);
+            let data = response;
+
+            let tmpText = "";
+            $.each(data, function (key, value) {
+              console.log("key", key);
+              console.log("value", value);
+
+              tmpText += `
+                <tr>
+                   <td>${value.id}</td>
+                   <td>${value.name}</td>
+                   <td>${value.tel}</td>               
+               </tr>
+                        `;
+            });
+            myTable.append(tmpText);
+          },
+        });
+      });
+    </script>
+  </body>
 </html>

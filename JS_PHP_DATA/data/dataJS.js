@@ -1,0 +1,17 @@
+let dataJS = [
+    {
+        "id": 1,
+        "name": "amy",
+        "tel": "0911"
+    },
+    {
+        "id": 2,
+        "name": "mikey",
+        "tel": "0922"
+    },
+    {
+        "id": 1,
+        "name": "mary",
+        "tel": "0933"
+    },
+]
