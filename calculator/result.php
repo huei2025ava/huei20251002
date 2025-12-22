@@ -20,7 +20,7 @@ $data = [
     'num1' => $input['num1'] ?? 0,
     'num2' => $input['num2'] ?? 0,
     'opt' => $input['opt'] ?? '+',
-    'color' => $input['color'] ?? 'red',
+
 ];
 
 // 3.switch
@@ -28,7 +28,7 @@ $num1 = $data['num1'];
 $num2 = $data['num2'];
 $opt = $data['opt'];
 
-$color = $data['color'];
+$color = $input['color'] ?? 'red';
 
 // dd($input);
 
@@ -57,22 +57,25 @@ switch ($opt) {
         break;
 }
 
-// switch ($color) {
-//     case 'red':
-//         // $color = 'bg-lightcoral';
-//         break;
-//     case 'yellow':
-//         $color = 'bg-lightyellow';
-//         break;
-//     case 'blue':
-//         $color = 'bg-lightblue';
-//         break;  
-//     default:
-//         break;
-// }
+$bgColor = '';
+
+switch ($color) {
+    case 'red':
+        $bgColor = 'bg-red';
+        break;
+    case 'yellow':
+        $bgColor = 'bg-yellow';
+        break;
+    case 'blue':
+        $bgColor = 'bg-blue';
+        break;  
+    default:
+        break;
+}
 
 $data['calcResult'] = $clacResult;
 $data['textResult'] = $textResult;
+$data['bgColor'] = $bgColor;
 
 // echo $clacResult;
 // echo '<br>';

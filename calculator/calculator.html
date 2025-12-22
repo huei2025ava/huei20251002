@@ -15,18 +15,19 @@
       .container-input {
         background-color: lightcoral;
       }
-      .container-output {
-        background-color: lightgreen;
+      h2 {
+        text-align: center;
       }
-      /* .bg-red {
-        background-color: rgb(214, 64, 64);
+      .bg-red {
+      background-color: lightpink;
       }
       .bg-yellow {
         background-color: lightyellow;
       }
       .bg-blue {
         background-color: lightskyblue;
-      } */
+      }
+   
     </style>
   </head>
 
@@ -52,17 +53,17 @@
         </p>
         <p>
           <div>
-            <input type="radio" id="red" name="color" value="lightpink" checked />
+            <input type="radio" id="red" name="color"  value="red" checked />
             <label for="huey">red</label>
           </div>
         
           <div>
-            <input type="radio" id="yellow" name="color" value="lightyellow" />
+            <input type="radio" id="yellow" name="color" value="yellow"/>
             <label for="dewey">yellow</label>
           </div>
         
           <div>
-            <input type="radio" id="blue" name="color" value="lightskyblue"/>
+            <input type="radio" id="blue" name="color"  value="blue"/>
             <label for="louie">blue</label>
           </div>
         </p>
@@ -110,7 +111,8 @@
             success: function (response) {
               console.log("response:", response);
               result.text(response.textResult);
-              output.css('background-color', response.color)
+              // output.css('background-color', response.color)
+              output.attr('class', response.bgColor)
             },
           });
         });
