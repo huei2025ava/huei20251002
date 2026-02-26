@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container bg-secondary text-white text-center w-50 mt-5">
+      <h1>氣象局天氣API</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>時段一</th>
+            <th>時段二</th>
+            <th>時段三</th>
+          </tr>
+        </thead>
+        <tbody id="myTbody"></tbody>
+      </table>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="../pwd/pwd.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        const myTbody = $("#myTbody");
+
+        let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`;
+
+        $.ajax({
+          type: "get",
+          url: url,
+          data: "data",
+          dataType: "json",
+          success: function (res) {
+            console.log(res);
+            let data = res.records.location;
+            let tmpText = "";
+            $.each(data, function (key, value) {
+              console.log("key", key);
+              console.log("value", value.locationName);
+
+              let time1Min =
+                value.weatherElement[2].time[0].parameter.parameterName;
+              let time2Min =
+                value.weatherElement[2].time[1].parameter.parameterName;
+              let time3Min =
+                value.weatherElement[2].time[2].parameter.parameterName;
+              let time1Max =
+                value.weatherElement[4].time[0].parameter.parameterName;
+              let time2Max =
+                value.weatherElement[4].time[1].parameter.parameterName;
+              let time3Max =
+                value.weatherElement[4].time[2].parameter.parameterName;
+
+              console.log("time1Min", time1Min);
+              console.log("time2Min", time2Min);
+              console.log("time3Min", time3Min);
+
+              tmpText += `
+               <tr>
+                 <td>${key + 1}</td>
+                 <td>${value.locationName}</td>
+                 <td>${time1Min}-${time1Max} °C </td>
+                 <td>${time2Min}-${time2Max} °C </td>
+                 <td>${time3Min}-${time3Max} °C </td>
+               </tr>
+              `;
+            });
+            myTbody.append(tmpText)
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
