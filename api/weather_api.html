@@ -63,18 +63,12 @@
               console.log("key", key);
               console.log("value", value.locationName);
 
-              let time1Min =
-                value.weatherElement[2].time[0].parameter.parameterName;
-              let time2Min =
-                value.weatherElement[2].time[1].parameter.parameterName;
-              let time3Min =
-                value.weatherElement[2].time[2].parameter.parameterName;
-              let time1Max =
-                value.weatherElement[4].time[0].parameter.parameterName;
-              let time2Max =
-                value.weatherElement[4].time[1].parameter.parameterName;
-              let time3Max =
-                value.weatherElement[4].time[2].parameter.parameterName;
+              let time1Min = value.weatherElement[2].time[0].parameter.parameterName;
+              let time2Min = value.weatherElement[2].time[1].parameter.parameterName;
+              let time3Min = value.weatherElement[2].time[2].parameter.parameterName;
+              let time1Max = value.weatherElement[4].time[0].parameter.parameterName;
+              let time2Max = value.weatherElement[4].time[1].parameter.parameterName;
+              let time3Max = value.weatherElement[4].time[2].parameter.parameterName;
 
               console.log("time1Min", time1Min);
               console.log("time2Min", time2Min);
