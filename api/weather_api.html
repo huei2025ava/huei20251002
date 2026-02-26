@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <div class="container bg-secondary text-white text-center w-50 mt-5">
+    <div class="container bg-secondary text-white text-center w-75 mt-5">
       <h1>氣象局天氣API</h1>
 
       <table class="table">
@@ -60,31 +60,51 @@
             let data = res.records.location;
             let tmpText = "";
             $.each(data, function (key, value) {
-              console.log("key", key);
-              console.log("value", value.locationName);
+              //   console.log("key", key);
+              //   console.log("value", value.locationName);
 
-              let time1Min = value.weatherElement[2].time[0].parameter.parameterName;
-              let time2Min = value.weatherElement[2].time[1].parameter.parameterName;
-              let time3Min = value.weatherElement[2].time[2].parameter.parameterName;
-              let time1Max = value.weatherElement[4].time[0].parameter.parameterName;
-              let time2Max = value.weatherElement[4].time[1].parameter.parameterName;
-              let time3Max = value.weatherElement[4].time[2].parameter.parameterName;
+              let time1Min =
+                value.weatherElement[2].time[0].parameter.parameterName;
+              let time2Min =
+                value.weatherElement[2].time[1].parameter.parameterName;
+              let time3Min =
+                value.weatherElement[2].time[2].parameter.parameterName;
+              let time1Max =
+                value.weatherElement[4].time[0].parameter.parameterName;
+              let time2Max =
+                value.weatherElement[4].time[1].parameter.parameterName;
+              let time3Max =
+                value.weatherElement[4].time[2].parameter.parameterName;
 
-              console.log("time1Min", time1Min);
-              console.log("time2Min", time2Min);
-              console.log("time3Min", time3Min);
+              let time1Wx =
+                value.weatherElement[0].time[0].parameter.parameterName;
+              let time2Wx =
+                value.weatherElement[0].time[1].parameter.parameterName;
+              let time3Wx =
+                value.weatherElement[0].time[2].parameter.parameterName;
+
+              let time1WxValue =
+                value.weatherElement[0].time[0].parameter.parameterValue;
+              let time2WxValue =
+                value.weatherElement[0].time[1].parameter.parameterValue;
+              let time3WxValue =
+                value.weatherElement[0].time[2].parameter.parameterValue;
+
+              //   console.log("time1Min", time1Min);
+              //   console.log("time2Min", time2Min);
+              //   console.log("time3Min", time3Min);
 
               tmpText += `
                <tr>
                  <td>${key + 1}</td>
                  <td>${value.locationName}</td>
-                 <td>${time1Min}-${time1Max} °C </td>
-                 <td>${time2Min}-${time2Max} °C </td>
-                 <td>${time3Min}-${time3Max} °C </td>
+                 <td>${time1Min}-${time1Max} °C&nbsp;&nbsp;&nbsp;${time1Wx} <img src="../weather_icon/day/${time1WxValue}.svg" alt=""></td>
+                 <td>${time2Min}-${time2Max} °C&nbsp;&nbsp;&nbsp;${time1Wx} <img src="../weather_icon/day/${time2WxValue}.svg" alt=""></td>
+                 <td>${time3Min}-${time3Max} °C&nbsp;&nbsp;&nbsp;${time1Wx} <img src="../weather_icon/day/${time3WxValue}.svg" alt=""></td>
                </tr>
               `;
             });
-            myTbody.append(tmpText)
+            myTbody.append(tmpText);
           },
         });
       });
