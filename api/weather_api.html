@@ -26,9 +26,9 @@
           <tr>
             <th>ID</th>
             <th>NAME</th>
-            <th>時段一</th>
-            <th>時段二</th>
-            <th>時段三</th>
+            <th>時段一&nbsp;&nbsp;&nbsp;<span id="time1"></span></th>
+            <th>時段二&nbsp;&nbsp;&nbsp;<span id="time2"></span></th>
+            <th>時段三&nbsp;&nbsp;&nbsp;<span id="time3"></span></th>
           </tr>
         </thead>
         <tbody id="myTbody"></tbody>
@@ -47,6 +47,9 @@
     <script>
       $(document).ready(function () {
         const myTbody = $("#myTbody");
+        const time1 = $("#time1");
+        const time2 = $("#time2");
+        const time3 = $("#time3");
 
         let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`;
 
@@ -58,11 +61,41 @@
           success: function (res) {
             console.log(res);
             let data = res.records.location;
+
+            // 開始時間、結束時間
+            let time1Start = data[0].weatherElement[0].time[0].startTime;
+            let time1End = data[0].weatherElement[0].time[0].endTime;
+            let time2Start = data[0].weatherElement[0].time[1].startTime;
+            let time2End = data[0].weatherElement[0].time[1].endTime;
+            let time3Start = data[0].weatherElement[0].time[2].startTime;
+            let time3End = data[0].weatherElement[0].time[2].endTime;
+
+            let time1Date = new Date(time1Start);
+            let time1StartHour = time1Date.getHours();
+            let timt1EndHour = new Date(time1End).getHours();
+
+            let time2Date = new Date(time2Start);
+            let time2StartHour = time2Date.getHours();
+            let time2EndHour = new Date(time2End).getHours();
+
+            let time3Date = new Date(time3Start);
+            let time3StartHour = time3Date.getHours();
+            let time3EndHour = new Date(time3End).getHours();
+
+            let time1String = `${time1StartHour} ~ ${timt1EndHour}`;
+            let time2String = `${time2StartHour} ~ ${time2EndHour}`;
+            let time3String = `${time3StartHour} ~ ${time3EndHour}`;
+
+            time1.text(time1String);
+            time2.text(time2String);
+            time3.text(time3String);
+
             let tmpText = "";
             $.each(data, function (key, value) {
               //   console.log("key", key);
               //   console.log("value", value.locationName);
 
+              // 最高溫、最低溫
               let time1Min =
                 value.weatherElement[2].time[0].parameter.parameterName;
               let time2Min =
@@ -76,6 +109,7 @@
               let time3Max =
                 value.weatherElement[4].time[2].parameter.parameterName;
 
+              // 天氣描述
               let time1Wx =
                 value.weatherElement[0].time[0].parameter.parameterName;
               let time2Wx =
@@ -83,6 +117,7 @@
               let time3Wx =
                 value.weatherElement[0].time[2].parameter.parameterName;
 
+              // 天氣圖示代號
               let time1WxValue =
                 value.weatherElement[0].time[0].parameter.parameterValue;
               let time2WxValue =
